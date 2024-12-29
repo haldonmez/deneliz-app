@@ -1,0 +1,157 @@
+/* Navbar genel stilleri */
+.navbar {
+    background-color: #00ADB5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s;
+}
+
+/* Navbar sol bölümü (hamburger ikon ve başlık) */
+.navbar-left {
+    display: flex;
+    align-items: center; /* Dikey olarak ortala */
+}
+
+/* Navbar logo ve başlık */
+.navbar-logo {
+    font-size: 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center; /* Başlığı simge ile hizala */
+    margin-left: 10px; /* Menü ikonundan biraz boşluk */
+}
+
+.navbar-title {
+    margin-left: 5px; /* Boşluğu azalt */
+    font-size: 2rem; /* Başlık boyutunu biraz artır */
+    color: #393E46; 
+    font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    text-decoration: none; /* Alt çizgiyi kaldır */
+}
+
+.highlight {
+    color: white; /* Başlangıçta beyaz */
+    transition: none; /* Geçiş efekti */
+}
+
+.navbar.scrolled .highlight {
+    color: #00ADB5; /* Scroll durumunda rengi değiştir */
+}
+
+/* Scroll durumunda navbar */
+.navbar.scrolled {
+    background-color: rgba(44, 62, 80, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Scroll durumunda başlık rengi */
+.navbar.scrolled .navbar-title {
+    color: white; /* Başlık rengi beyaz */
+}
+
+/* Hamburger simgesi */
+.menu-icon {
+    cursor: pointer;
+    display: none; /* Başlangıçta gizli */
+    flex-direction: column;
+    gap: 5px;
+}
+
+/* Barlar için stil */
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #393E46; /* Başlangıçta "Dene" rengi */
+    transition: none; /* Arka plan rengi geçişi */
+}
+
+/* Scroll durumunda barlar için stil */
+.navbar.scrolled .bar {
+    background-color: white; /* Aşağı kaydırıldığında beyaz */
+}
+
+/* Hamburger menü açıkken */
+.menu-icon.open .bar:nth-child(1),
+.menu-icon.open .bar:nth-child(2),
+.menu-icon.open .bar:nth-child(3) {
+    background-color: white; /* Açıkken beyaz */
+}
+
+/* Menü açıldığında hamburger animasyonu */
+.menu-icon.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-icon.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-icon.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Navbar linkleri */
+.navbar-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    flex: 2;
+    justify-content: flex-end;
+    margin-right: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none; /* Alt çizgiyi kaldır */
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #222831;
+}
+
+/* Mobil menü bağlantıları gizleme ve açma */
+.navbar-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Hamburger menü altında başlayacak */
+    left: 10px; /* Menü solda açılacak */
+    background-color: #00ADB5;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 999; /* Menü üstte kalacak */
+}
+
+/* Menü bağlantıları alt alta dizilmesi için */
+.navbar-links li {
+    margin: 10px 0; /* Her bir menü öğesi arasında boşluk */
+}
+
+/* Mobil görünüm için ayarlar */
+@media (max-width: 768px) {
+    .menu-icon {
+        display: flex; /* Hamburger simgesi sadece mobil görünümde görünür */
+    }
+
+    /* Navbar bağlantıları */
+    .navbar-links {
+        display: none; /* Başlangıçta gizli */
+        flex-direction: column;
+        gap: 15px;
+        margin: 10px 0;
+    }
+
+    .navbar-links.open {
+        display: flex; /* Açıldığında bağlantıları göster */
+    }
+}

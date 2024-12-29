@@ -1,0 +1,88 @@
+
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    padding: 20px; /* Kenar boşlukları ekleyerek içerikleri yükelemeye yardımcı olur */
+}
+
+.examh2 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px; /* Başlık ile içerik arasında boşluk */
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none; /* Kullanıcının boyutlandırmasını engelle */
+}
+
+/* Container ayarları */
+.container {
+    display: flex;
+    align-items: center; /* Dikey ortalama */
+    justify-content: center; /* Yatay ortalama */
+    position: relative; /* Konum ayarlaması için */
+    background-color: white;
+    width: 100%;
+    margin: 20px 0; /* Üst ve alt boşluk */
+    box-shadow: none; /* Gölgeyi kaldır */
+}
+
+/* Çizgilerin stilleri */
+.line {
+    flex: 1; /* Çizgilerin genişliğini ayarlamak için */
+    border: 2px solid #00ADB5; /* Çizgi rengi ve kalınlığı */
+    margin: 0 10px; /* Çizgilerle buton arasındaki boşluk */
+}
+
+/* Buton stilleri */
+button {
+    background-color: white; /* Arka plan rengi beyaz */
+    color: #00ADB5; /* Neon mavi yazı rengi */
+    border: 4px solid #00ADB5; /* Neon mavi dış çerçeve, kalınlığı artırıldı */
+    border-radius: 50%; /* Tam yuvarlak köşeler */
+    width: 120px; /* Buton genişliği artırıldı */
+    height: 120px; /* Buton yüksekliği artırıldı */
+    padding: 0; /* İç boşluk sıfır */
+    font-size: 20px; /* Yazı boyutu */
+    font-weight: bold; /* Yazı kalınlığı artırıldı */
+    cursor: pointer; /* Üzerine gelindiğinde imleci değiştir */
+    transition: background-color 0.3s; /* Geçiş efekti */
+}
+
+button:hover {
+    background-color: #393E46; /* Üzerine gelindiğinde arka plan rengi */
+}
+
+/* Responsive Ayarlar */
+@media (max-width: 768px) {
+    .App {
+        padding: 10px; /* Küçük ekranlar için padding azaltıldı */
+    }
+
+    button {
+        width: 100px; /* Buton genişliği küçük ekranlarda azaltıldı */
+        height: 100px; /* Buton yüksekliği küçük ekranlarda azaltıldı */
+        font-size: 18px; /* Yazı boyutu küçük ekranlarda azaltıldı */
+    }
+
+    .examh2 {
+        font-size: 20px; /* Başlık boyutu küçük ekranlarda azaltıldı */
+    }
+
+    textarea {
+        height: 80px; /* Küçük ekranlarda textarea boyutu azaltıldı */
+    }
+}
