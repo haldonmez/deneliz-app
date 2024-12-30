@@ -44,7 +44,7 @@ Projeyi kendi bilgisayarınızda çalıştırmak için:
     npm start
     ```
 
-    Proje `http://localhost:5000` adresinde çalışacaktır.
+    Proje `http://localhost:8000` adresinde çalışacaktır.
 
 ## Ekran Görüntüleri
 Projenin ana sayfası ve analiz bölümü gibi önemli kısımları göstermek için bazı ekran görüntüleri ekleyin:
