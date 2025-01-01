@@ -58,9 +58,14 @@ class RAGProcessView(APIView):
             )
 
 
+from pdf2image import convert_from_path
+from pathlib import Path
+import fitz  # PyMuPDF
+import os
+
 class UploadPDFView(APIView):
     def post(self, request):
-        """Handle the PDF file upload"""
+        """Handle the PDF file upload and conversion"""
         try:
             if "pdf" not in request.FILES:
                 return Response(
@@ -70,33 +75,56 @@ class UploadPDFView(APIView):
 
             uploaded_pdf = request.FILES["pdf"]
             
-            # Ensure the uploads directory exists
+            # Validate file type
+            if not uploaded_pdf.name.endswith('.pdf'):
+                return Response(
+                    {"error": "File must be a PDF"}, 
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            
+            # Create base uploads directory
             upload_dir = os.path.join(settings.MEDIA_ROOT, "uploads")
             os.makedirs(upload_dir, exist_ok=True)
             
-            # Create the full file path
-            file_path = os.path.join(upload_dir, uploaded_pdf.name)
+            # Create folder for this specific PDF (use filename without extension)
+            pdf_name = os.path.splitext(uploaded_pdf.name)[0]
+            pdf_folder = os.path.join(upload_dir, pdf_name)
+            os.makedirs(pdf_folder, exist_ok=True)
             
-            # Save the file using chunks
-            with open(file_path, "wb+") as destination:
+            # Save the original PDF
+            pdf_path = os.path.join(pdf_folder, uploaded_pdf.name)
+            with open(pdf_path, "wb+") as destination:
                 for chunk in uploaded_pdf.chunks():
                     destination.write(chunk)
             
-            print(f"File successfully saved to: {file_path}")  # Debugging log
+            # Convert PDF to images
+            pdf_document = fitz.open(pdf_path)
+            image_paths = []
+            
+            for page_number in range(pdf_document.page_count):
+                page = pdf_document[page_number]
+                
+                # Get the pixel map (higher zoom factor = higher resolution)
+                pix = page.get_pixmap(matrix=fitz.Matrix(300/72, 300/72))  # 300 DPI
+                
+                image_filename = f'page_{page_number + 1}.jpg'
+                image_path = os.path.join(pdf_folder, image_filename)
+                
+                # Save the image
+                pix.save(image_path)
+                image_paths.append(image_path)
+            
+            pdf_document.close()
             
             return Response({
-                "message": "PDF uploaded successfully",
-                "file_path": file_path
+                "message": "PDF uploaded and converted successfully",
+                "pdf_path": pdf_path,
+                "image_paths": image_paths,
+                "total_pages": len(image_paths)
             }, status=status.HTTP_200_OK)
 
         except Exception as e:
-            print(f"Error during upload: {str(e)}")  # Debugging log
+            print(f"Error during processing: {str(e)}")  # Debugging log
             return Response({
-                "error": f"Upload failed: {str(e)}"
+                "error": f"Processing failed: {str(e)}"
             }, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-    
-    def get(self, request):
-        """Handle GET requests"""
-        return Response({
-            "message": "This endpoint only accepts POST requests for file uploads"
-        }, status=status.HTTP_405_METHOD_NOT_ALLOWED)
