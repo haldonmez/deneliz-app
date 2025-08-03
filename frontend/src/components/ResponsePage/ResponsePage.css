@@ -1,0 +1,97 @@
+.uygulama {
+  padding: 0px;
+  margin: 0px;
+}
+
+.baslik {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.kutu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sayfa-alani {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  cursor: pointer;
+  background-color: #f1f1f1;
+}
+
+.toggle-icon {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-content {
+  padding: 15px;
+  background-color: #fff;
+}
+
+.question {
+  margin-bottom: 10px;
+}
+
+.question ul {
+  padding-left: 20px;
+}
+
+.b {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.question-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.question-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid
+
+}
+.wrong-summary {
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #fff4f4;
+  border: 1px solid #e0b4b4;
+  border-radius: 8px;
+  max-width: 900px;
+}
+
+.wrong-summary h3 {
+  color: #c0392b;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.wrong-summary ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.wrong-summary li {
+  background-color: #ffecec;
+  border: 1px solid #e0b4b4;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  font-size: 15px;
+  line-height: 1.5;
+}

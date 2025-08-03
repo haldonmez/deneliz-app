@@ -1,0 +1,62 @@
+.mypdf-container {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+.mypdf-content {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.mypdf-title {
+  text-align: center;
+  color: #343a40;
+  margin-bottom: 24px;
+  font-size: 24px;
+}
+
+.pdf-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pdf-item {
+  padding: 16px;
+  border-bottom: 1px solid #e9ecef;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pdf-item:last-child {
+  border-bottom: none;
+}
+
+.pdf-link {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.pdf-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.upload-date {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.no-pdf {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+}

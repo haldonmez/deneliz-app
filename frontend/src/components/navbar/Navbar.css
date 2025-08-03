@@ -1,0 +1,193 @@
+/* === Navbar Genel Stil === */
+.navbar {
+  background-color: #00ADB5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+
+.navbar.scrolled {
+  background-color: rgba(44, 62, 80, 0.9);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* === Sol Bölüm (Logo + Menü İkonu) === */
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: white;
+  margin-left: 10px;
+}
+
+.navbar-title {
+  margin-left: 5px;
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #393E46;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.navbar.scrolled .navbar-title {
+  color: white;
+}
+
+.highlight {
+  color: white;
+  transition: none;
+}
+
+.navbar.scrolled .highlight {
+  color: #00ADB5;
+}
+
+/* === Hamburger Menü === */
+.menu-icon {
+  cursor: pointer;
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: #393E46;
+}
+
+.navbar.scrolled .bar,
+.menu-icon.open .bar {
+  background-color: white;
+}
+
+.menu-icon.open .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-icon.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-icon.open .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* === Menü Linkleri === */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  flex: 2;
+  justify-content: flex-end;
+  margin-right: 20px;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #222831;
+}
+
+/* === Dropdown (Kullanıcı Menüsü) === */
+.user-hover {
+  position: relative;
+}
+
+.user-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 8px 10px;
+  z-index: 999;
+  width: 150px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.user-dropdown p {
+  margin: 0 0 10px 0;
+  font-weight: 600;
+  font-size: 12px;
+  color: #333;
+  text-align: left;
+  padding-left: 2px;
+  margin-bottom: 6px;
+
+}
+
+.user-dropdown button {
+  background-color: #00ADB5;
+  color: white;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  width: 100%;
+  margin-bottom: 6px;
+  transition: background-color 0.2s ease;
+  text-align: center;
+  font-weight: 500;
+  height: 32px; /* Daha kısa buton yüksekliği */
+  line-height: 1.2;
+}
+
+
+.user-dropdown button:last-child {
+  margin-bottom: 0;
+}
+
+.user-dropdown button:hover {
+  background-color: #007C82;
+}
+
+/* === Mobil Görünüm === */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: flex;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    margin: 10px 0;
+  }
+
+  .navbar-links.open {
+    display: flex;
+    position: absolute;
+    top: 60px;
+    left: 10px;
+    background-color: #00ADB5;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+
+  .navbar-links li {
+    margin: 10px 0;
+  }
+}

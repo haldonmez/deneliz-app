@@ -1,0 +1,178 @@
+/* Navbar kapsayıcısı için düzenlemeler */
+.navbar-container {
+    padding: 0;
+    margin: -20px;
+}
+
+/* Ana içerik alanı */
+.home-container {
+    padding-top: 60px; /* Navbar yüksekliği */
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    font-family: 'Arial', sans-serif;
+    color: #393E46;
+    background-color: #EEEEEE;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Kahraman (Hero) bölümü */
+.hero-section {
+    text-align: center;
+    padding: 2rem 1rem;
+    background: #393E46;
+    color: #EEEEEE;
+    border-bottom: 5px solid #00ADB5;
+    animation: fadeIn 1.5s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; /* Yükseklik ayarı */
+}
+
+/* Kahraman bölümündeki başlık ve paragraflar */
+.hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    animation: slideDown 1s ease-out;
+}
+
+.hero-section p {
+    font-size: 1.3rem;
+    max-width: 650px;
+    margin: 0 auto 2rem;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.cta-button {
+    padding: 0.75rem 2rem;
+    font-size: 1.2rem;
+    background-color: #00ADB5;
+    border: none;
+    border-radius: 30px;
+    color: #222831;
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+    font-weight: bold;
+    animation: bounceIn 1.5s ease;
+}
+
+.cta-button:hover {
+    background-color: #EEEEEE;
+    color: #393E46;
+    transform: scale(1.05);
+}
+
+/* Motivasyon bölümü */
+.motivational-section {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 2rem 0;
+    animation: fadeInSection 1s ease-in-out;
+}
+
+/* Motivasyon kartları */
+.motive-card {
+    max-width: 300px;
+    background: #EEEEEE;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s;
+    color: #393E46;
+    border-top: 4px solid #00ADB5;
+    animation: fadeSlideIn 1.5s ease-out;
+}
+
+.motive-card:hover {
+    transform: translateY(-5px);
+}
+
+.motive-card h2 {
+    font-size: 1.8rem;
+    color: #00ADB5;
+    margin-bottom: 1rem;
+}
+
+.motive-card p {
+    font-size: 1rem;
+    color: #393E46;
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    60% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); }
+}
+
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInSection {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive ayarlar */
+@media (max-width: 768px) {
+    .hero-section {
+        height: auto; /* Mobilde yükseklik otomatik olsun */
+        padding: 3rem 1rem; /* Daha fazla padding */
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem; /* Başlık boyutu */
+    }
+
+    .hero-section p {
+        font-size: 1rem; /* Açıklama boyutu */
+    }
+
+    .motivational-section {
+        flex-direction: column; /* Kartlar alt alta dizilmesi */
+        align-items: center; /* Ortalanacak */
+        padding: 1rem 0;
+    }
+
+    .motive-card {
+        max-width: 90%; /* Kart genişliği */
+        margin-bottom: 1rem; /* Kartlar arasında boşluk */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section h1 {
+        font-size: 2rem; /* Daha küçük başlık boyutu */
+    }
+
+    .hero-section p {
+        font-size: 0.9rem; /* Daha küçük açıklama boyutu */
+    }
+
+    .cta-button {
+        padding: 0.5rem 1.5rem; /* Buton boyutları */
+        font-size: 1rem; /* Buton metni */
+    }
+
+    .motivational-section {
+        padding: 1rem 0; /* Motivasyon bölümündeki padding */
+    }
+}
